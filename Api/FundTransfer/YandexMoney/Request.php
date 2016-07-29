@@ -6,5 +6,5 @@ use vvovnenko\Payboutique\Api\FundTransfer;
 
 class Request extends FundTransfer\Request
 {
-    protected $paymentMethod = 'Yandex.Money';
+    protected $paymentMethod = 'YandexMoney';
 }
