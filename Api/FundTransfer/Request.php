@@ -196,6 +196,7 @@ abstract class Request extends RequestAbstract
         $xml .= self::xmlNode('City', $this->city);
         $xml .= self::xmlNode('Country', $this->country);
         $xml .= self::xmlNode('Zip', $this->zip);
+        $xml .= $this->makePayeeAdditionalBodyData();
         $xml .= '</Buyer>';
         $xml .= '</Order>';
         $xml .= '</Body>';
@@ -411,5 +412,10 @@ abstract class Request extends RequestAbstract
         $this->zip = $zip;
     }
 
-
+    /**
+     * @return string
+     */
+    protected function makePayeeAdditionalBodyData() {
+        return '';
+    }
 }
