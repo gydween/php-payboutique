@@ -86,6 +86,10 @@ class Response extends ResponseAbstract
      */
     protected $referenceId;
 
+    /**
+     * @var float
+     */
+    protected $balanceMerchantCurrency;
 
     /**
      * @param \SimpleXMLElement $body
@@ -99,6 +103,7 @@ class Response extends ResponseAbstract
             $order = $body->Order;
             $this->paymentMethod = (string)$order['paymentMethod'];
             $this->payeeCurrency = (string)$order['payeeCurrency'];
+            $this->balanceMerchantCurrency = (float)$order['balanceMerchantCurrency'];
             $this->amountPayeeCurrency = (float)$order->AmountPayeeCurrency;
             $this->merchantCurrency = (string)$order->MerchantCurrency;
             $this->amountMerchantCurrency = (float)$order->AmountMerchantCurrency;
@@ -216,5 +221,11 @@ class Response extends ResponseAbstract
         return $this->payeeCurrency;
     }
 
-
+    /**
+     * @return float
+     */
+    public function getBalanceMerchantCurrency()
+    {
+        return $this->balanceMerchantCurrency;
+    }
 }
