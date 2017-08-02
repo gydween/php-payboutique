@@ -178,7 +178,7 @@ abstract class Request extends RequestAbstract
         $xml .= self::xmlNode('MerchantCurrency', $this->merchantCurrency);
         $xml .= self::xmlNode('Label', $this->label);
         $xml .= self::xmlNode('Description', $this->description);
-        $xml .= '<Buyer>';
+        $xml .= '<Payee>';
         $xml .= self::xmlNode('AccountID', $this->accountId);
         $xml .= self::xmlNode('LastName', $this->lastName);
         $xml .= self::xmlNode('FirstName', $this->firstName);
@@ -197,7 +197,7 @@ abstract class Request extends RequestAbstract
         $xml .= self::xmlNode('Country', $this->country);
         $xml .= self::xmlNode('Zip', $this->zip);
         $xml .= $this->makePayeeAdditionalBodyData();
-        $xml .= '</Buyer>';
+        $xml .= '</Payee>';
         $xml .= '</Order>';
         $xml .= '</Body>';
 
