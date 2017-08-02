@@ -124,6 +124,7 @@ class Request extends FundTransfer\Request
     {
         $xml = '<Bank>';
         $xml .= self::xmlNode('BankBIC', $this->bankBic);
+        $xml .= self::xmlNode('BankCorAccount', $this->bankCorAccount);
         $xml .= self::xmlNode('BankCity', $this->bankCity);
         $xml .= self::xmlNode('BankName', $this->bankName);
         $xml .= self::xmlNode('BankCountry', $this->bankCountry);
