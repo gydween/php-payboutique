@@ -155,6 +155,11 @@ abstract class Request extends RequestAbstract
      */
     protected $zip;
 
+    /**
+     * @var string
+     */
+    private $bulk;
+
     protected function init()
     {
         parent::init();
@@ -166,7 +171,11 @@ abstract class Request extends RequestAbstract
      */
     protected function makeBody()
     {
-        $xml =  '<Body type="FundTransfer" preProcessing="false" ' . self::xmlAttr('live', $this->live) . '>';
+        $xml =  '<Body type="FundTransfer" preProcessing="false" '
+            . self::xmlAttr('live', $this->live) . ' '
+            . self::xmlAttr('bulk', $this->bulk) . ' '
+            . self::xmlAttr('countOrder', $this->bulk? 1 : null) . ' '
+            . '>';
         $xml .= '<Order '
             . self::xmlAttr('paymentMethod', $this->paymentMethod)
             . ' '
@@ -410,6 +419,14 @@ abstract class Request extends RequestAbstract
     public function setZip($zip)
     {
         $this->zip = $zip;
+    }
+
+    /**
+     * @param bool $bulk
+     */
+    public function setBulk($bulk)
+    {
+        $this->bulk = $bulk? 'true' : '';
     }
 
     /**
